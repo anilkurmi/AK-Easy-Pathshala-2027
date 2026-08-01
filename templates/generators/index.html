@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Generators - AK Easy Pathshala{% endblock %}
+{% block page_title %}AI Content Generators{% endblock %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12"><h5 style="color:var(--accent)"><i class="bi bi-robot"></i> AI Question Paper Generator</h5></div>
+    {% set qgens = [
+        ('question_paper_generator', 'bi-file-earmark-text', 'Question Paper Generator', 'Generate customized question papers'),
+        ('model_paper_generator', 'bi-journal-richtext', 'Model Paper Generator', 'Full model exam papers'),
+        ('practice_paper_generator', 'bi-pencil-square', 'Practice Paper Generator', 'Practice papers for students'),
+        ('mcq_generator', 'bi-list-check', 'MCQ Generator', 'Multiple choice questions'),
+        ('test_generator', 'bi-clipboard-check', 'Test Generator', 'Quick test papers'),
+    ] %}
+    {% for endpoint, icon, title, desc in qgens %}
+    <div class="col-md-4 col-6 mb-3">
+        <a href="{{ url_for(endpoint) }}" class="generator-card">
+            <i class="bi {{ icon }}"></i>
+            <h6>{{ title }}</h6>
+            <p>{{ desc }}</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<div class="row mb-4">
+    <div class="col-12"><h5 style="color:var(--purple)"><i class="bi bi-tools"></i> Content Generators</h5></div>
+    {% set cgens = [
+        ('lesson_plan_generator', 'bi-briefcase', 'Lesson Plan Generator', 'CDC curriculum lesson plans'),
+        ('slide_generator', 'bi-easel', 'PPT/Slide Generator', 'PowerPoint presentations'),
+        ('flashcard_generator', 'bi-card-heading', 'Flash Card Generator', 'Study flash cards'),
+        ('worksheet_generator', 'bi-file-earmark', 'Worksheet Generator', 'Practice worksheets'),
+        ('report_card_generator', 'bi-clipboard-data', 'Report Card Generator', 'Student report cards'),
+        ('quick_notes', 'bi-sticky', 'Quick Revision Notes', 'Fast revision summaries'),
+    ] %}
+    {% for endpoint, icon, title, desc in cgens %}
+    <div class="col-md-4 col-6 mb-3">
+        <a href="{{ url_for(endpoint) }}" class="generator-card">
+            <i class="bi {{ icon }}"></i>
+            <h6>{{ title }}</h6>
+            <p>{{ desc }}</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

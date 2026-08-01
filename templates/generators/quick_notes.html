@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Quick Revision Notes{% endblock %}
+{% block page_title %}<i class="bi bi-sticky"></i> Quick Revision Notes{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-3"><label class="form-label">Class *</label>
+                    <select class="form-select" name="class_name" required><option value="">--</option>{% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select></div>
+                <div class="col-md-3"><label class="form-label">Subject *</label>
+                    <select class="form-select" name="subject" required><option value="">--</option>{% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
+                <div class="col-md-3"><label class="form-label">Chapter *</label><input type="text" class="form-control" name="chapter" required></div>
+                <div class="col-md-3"><label class="form-label">Language</label>
+                    <select class="form-select" name="language"><option value="English">English</option><option value="Nepali">Nepali</option></select></div>
+                <div class="col-12 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-magic"></i> Generate Quick Notes</button></div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

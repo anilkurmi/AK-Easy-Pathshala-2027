@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - AK Easy Pathshala{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+{% block content %}
+
+<div class="row mb-4">
+    <div class="col-md-3 col-6 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon bg-primary bg-opacity-10 text-primary"><i class="bi bi-clipboard-data"></i></div>
+            <h3>{{ total_questions }}</h3>
+            <p>Total Questions</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon bg-success bg-opacity-10 text-success"><i class="bi bi-briefcase"></i></div>
+            <h3>{{ total_lessons }}</h3>
+            <p>Lesson Plans</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon bg-info bg-opacity-10 text-info"><i class="bi bi-easel"></i></div>
+            <h3>{{ total_slides }}</h3>
+            <p>PPT/Slides</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon bg-warning bg-opacity-10 text-warning"><i class="bi bi-file-earmark"></i></div>
+            <h3>{{ total_worksheets }}</h3>
+            <p>Worksheets</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3 col-6 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(187,134,252,0.1);color:var(--purple)"><i class="bi bi-person-video3"></i></div>
+            <h3>{{ total_students }}</h3>
+            <p>Students</p>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+        <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(255,107,157,0.1);color:var(--pink)"><i class="bi bi-person-badge"></i></div>
+            <h3>{{ total_teachers }}</h3>
+            <p>Teachers</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h5 class="mb-3" style="color:var(--accent)"><i class="bi bi-lightning"></i> Quick Generators</h5>
+    </div>
+    {% set generators = [
+        ('question_paper_generator', 'bi-file-earmark-text', 'Question Paper'),
+        ('model_paper_generator', 'bi-journal-richtext', 'Model Paper'),
+        ('mcq_generator', 'bi-list-check', 'MCQ Generator'),
+        ('test_generator', 'bi-clipboard-check', 'Test Generator'),
+        ('lesson_plan_generator', 'bi-briefcase', 'Lesson Plan'),
+        ('slide_generator', 'bi-easel', 'PPT/Slides'),
+        ('flashcard_generator', 'bi-card-heading', 'Flash Cards'),
+        ('worksheet_generator', 'bi-file-earmark', 'Worksheet'),
+        ('report_card_generator', 'bi-clipboard-data', 'Report Card'),
+        ('quick_notes', 'bi-sticky', 'Quick Notes'),
+    ] %}
+    {% for endpoint, icon, label in generators %}
+    <div class="col-md-2 col-4 col-6 mb-3">
+        <a href="{{ url_for(endpoint) }}" class="generator-card">
+            <i class="bi {{ icon }}"></i>
+            <h6>{{ label }}</h6>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row">
+    <div class="col-md-8 mb-4">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-clock-history"></i> Recent Questions</span>
+                <a href="{{ url_for('question_bank') }}" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body">
+                {% if recent_questions %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead><tr><th>Class</th><th>Subject</th><th>Type</th><th>Question</th></tr></thead>
+                        <tbody>
+                        {% for q in recent_questions %}
+                        <tr>
+                            <td><span class="badge bg-primary">{{ q.class_name }}</span></td>
+                            <td>{{ q.subject }}</td>
+                            <td><span class="badge bg-info">{{ q.question_type }}</span></td>
+                            <td>{{ q.question_text[:60] }}...</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted text-center">No questions yet. <a href="{{ url_for('add_question') }}">Add first question</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header"><i class="bi bi-megaphone"></i> Latest Notices</div>
+            <div class="card-body">
+                {% if notices %}
+                {% for n in notices %}
+                <div class="mb-3 pb-3 border-bottom" style="border-color:var(--card-border) !important">
+                    <h6 class="mb-1">{{ n.title }}</h6>
+                    <p class="mb-1" style="color:var(--text-secondary);font-size:0.85rem">{{ n.content[:100] }}...</p>
+                    <small style="color:var(--text-secondary)">{{ n.created_at.strftime('%d %b %Y') }}</small>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p class="text-muted text-center">No notices yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

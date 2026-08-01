@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Image Upload{% endblock %}
+{% block page_title %}<i class="bi bi-cloud-upload"></i> Image Upload{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Upload Image</div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3"><label class="form-label">Select Image *</label>
+                        <input type="file" class="form-control" name="file" accept="image/*" required></div>
+                    <div class="mb-3"><label class="form-label">Category</label>
+                        <select class="form-select" name="category">
+                            <option value="general">General</option>
+                            <option value="lesson">Lesson Material</option>
+                            <option value="question">Question Image</option>
+                            <option value="certificate">Certificate</option>
+                            <option value="other">Other</option>
+                        </select></div>
+                    <div class="mb-3"><label class="form-label">Description</label>
+                        <textarea class="form-control" name="description" rows="2"></textarea></div>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-upload"></i> Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Uploaded Images ({{ images|length }})</div>
+            <div class="card-body" style="max-height:500px;overflow-y:auto">
+                {% for img in images %}
+                <div class="d-flex align-items-center mb-3 pb-3" style="border-bottom:1px solid var(--card-border)">
+                    <img src="{{ url_for('static', filename='uploads/' + img.filename) }}" 
+                         style="width:60px;height:60px;object-fit:cover;border-radius:8px;margin-right:12px">
+                    <div>
+                        <strong style="font-size:0.9rem">{{ img.original_name }}</strong>
+                        <br><small class="text-muted">{{ img.category }} | {{ img.created_at.strftime('%d %b %Y') }}</small>
+                    </div>
+                </div>
+                {% endfor %}
+                {% if not images %}
+                <p class="text-muted text-center">No images uploaded yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

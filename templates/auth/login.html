@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Login - AK Easy Pathshala{% endblock %}
+{% block fullpage %}
+<div class="login-page">
+    <div class="login-card">
+        <div class="login-header">
+            <i class="bi bi-book-half"></i>
+            <h3>AK Easy Pathshala</h3>
+            <p>AI Your Teaching Partner</p>
+        </div>
+        <div class="login-body">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for cat, msg in messages %}
+                        <div class="alert alert-{{ cat }} py-2">{{ msg }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" name="email" required placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" class="form-control" name="password" required placeholder="Enter password">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2 mb-3"><i class="bi bi-box-arrow-in-right"></i> Login</button>
+            </form>
+            <div class="text-center">
+                <a href="{{ url_for('register') }}" style="color: var(--accent);">Don't have an account? Register</a>
+            </div>
+            <hr style="border-color: var(--card-border);">
+            <div style="color: var(--text-secondary); font-size: 0.8rem;">
+                <p class="mb-1"><strong>Demo:</strong></p>
+                <p class="mb-1">Admin: admin@akeasypathshala.com / admin123</p>
+                <p class="mb-0">Teacher: teacher@akeasypathshala.com / teacher123</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

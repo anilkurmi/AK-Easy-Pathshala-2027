@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Add Exam{% endblock %}
+{% block page_title %}<i class="bi bi-calendar-plus"></i> Add Exam{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-4"><label class="form-label">Exam Name *</label><input type="text" class="form-control" name="name" required placeholder="e.g. Mid-Term Exam"></div>
+                <div class="col-md-4"><label class="form-label">Class *</label>
+                    <select class="form-select" name="class_name" required><option value="">--</option>{% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select></div>
+                <div class="col-md-4"><label class="form-label">Subject</label>
+                    <select class="form-select" name="subject"><option value="">All Subjects</option>{% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
+                <div class="col-md-4"><label class="form-label">Date *</label><input type="date" class="form-control" name="date" required></div>
+                <div class="col-md-4"><label class="form-label">Total Marks</label><input type="number" class="form-control" name="total_marks" value="100"></div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Add Exam</button>
+                <a href="{{ url_for('school_exams') }}" class="btn btn-outline-light ms-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

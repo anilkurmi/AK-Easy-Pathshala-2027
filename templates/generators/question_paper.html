@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Question Paper Generator{% endblock %}
+{% block page_title %}<i class="bi bi-file-earmark-text"></i> Question Paper Generator{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label">Select Class *</label>
+                    <select class="form-select" name="class_name" required>
+                        <option value="">-- Select --</option>
+                        {% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Select Subject *</label>
+                    <select class="form-select" name="subject" required>
+                        <option value="">-- Select --</option>
+                        {% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Chapter/Unit</label>
+                    <input type="text" class="form-control" name="chapter" placeholder="e.g. Force and Pressure">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Question Type</label>
+                    <select class="form-select" name="question_type">
+                        <option value="">All Types</option>
+                        {% for qt in question_types %}<option value="{{ qt }}">{{ qt }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Difficulty</label>
+                    <select class="form-select" name="difficulty">
+                        <option value="">All</option>
+                        {% for d in difficulties %}<option value="{{ d }}">{{ d }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">No. of Questions</label>
+                    <input type="number" class="form-control" name="num_questions" value="10" min="1" max="100">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Total Marks</label>
+                    <input type="number" class="form-control" name="total_marks" value="50">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Duration</label>
+                    <input type="text" class="form-control" name="duration" value="2 Hours">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Language</label>
+                    <select class="form-select" name="language">
+                        <option value="English">English</option>
+                        <option value="Nepali">Nepali</option>
+                        <option value="Both">Both</option>
+                    </select>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100"><i class="bi bi-magic"></i> Generate</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

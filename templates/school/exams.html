@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Exams{% endblock %}
+{% block page_title %}<i class="bi bi-calendar-event"></i> Exam Management{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between mb-4">
+    <p class="text-muted">Total Exams: {{ exams|length }}</p>
+    <a href="{{ url_for('add_exam') }}" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add Exam</a>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead><tr><th>#</th><th>Exam Name</th><th>Class</th><th>Subject</th><th>Date</th><th>Marks</th></tr></thead>
+                <tbody>
+                {% for e in exams %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><strong>{{ e.name }}</strong></td>
+                    <td><span class="badge bg-primary">{{ e.class_name }}</span></td>
+                    <td>{{ e.subject or 'All' }}</td>
+                    <td>{{ e.date.strftime('%d %b %Y') if e.date else '-' }}</td>
+                    <td>{{ e.total_marks }}</td>
+                </tr>
+                {% endfor %}
+                {% if not exams %}
+                <tr><td colspan="6" class="text-center text-muted">No exams scheduled.</td></tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

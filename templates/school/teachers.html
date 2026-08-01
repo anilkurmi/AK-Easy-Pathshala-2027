@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Teachers{% endblock %}
+{% block page_title %}<i class="bi bi-person-badge"></i> Teachers Management{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between mb-4">
+    <p class="text-muted">Total Teachers: {{ teachers|length }}</p>
+    <a href="{{ url_for('add_teacher') }}" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add Teacher</a>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead><tr><th>#</th><th>Name</th><th>Subject</th><th>Qualification</th><th>Phone</th></tr></thead>
+                <tbody>
+                {% for t in teachers %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><strong>{{ t.name }}</strong></td>
+                    <td><span class="badge bg-info">{{ t.subject or '-' }}</span></td>
+                    <td>{{ t.qualification or '-' }}</td>
+                    <td>{{ t.phone or '-' }}</td>
+                </tr>
+                {% endfor %}
+                {% if not teachers %}
+                <tr><td colspan="5" class="text-center text-muted">No teachers yet.</td></tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

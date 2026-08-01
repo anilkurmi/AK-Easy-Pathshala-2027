@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}MCQ Generator{% endblock %}
+{% block page_title %}<i class="bi bi-list-check"></i> MCQ Generator{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label">Class *</label>
+                    <select class="form-select" name="class_name" required>
+                        <option value="">-- Select --</option>
+                        {% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Subject *</label>
+                    <select class="form-select" name="subject" required>
+                        <option value="">-- Select --</option>
+                        {% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Chapter</label>
+                    <input type="text" class="form-control" name="chapter">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Difficulty</label>
+                    <select class="form-select" name="difficulty">
+                        <option value="">All</option>
+                        {% for d in difficulties %}<option value="{{ d }}">{{ d }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <label class="form-label">Count</label>
+                    <input type="number" class="form-control" name="num_questions" value="20">
+                </div>
+                <div class="col-md-1">
+                    <label class="form-label">Language</label>
+                    <select class="form-select" name="language">
+                        <option value="English">Eng</option>
+                        <option value="Nepali">Nep</option>
+                    </select>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100"><i class="bi bi-magic"></i> Generate</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

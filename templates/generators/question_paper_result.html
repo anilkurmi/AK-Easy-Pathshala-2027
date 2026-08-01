@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Question Paper Result{% endblock %}
+{% block page_title %}Generated Question Paper{% endblock %}
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+            <strong>{{ class_name }} - {{ subject }}</strong>
+            {% if chapter %} | Chapter: {{ chapter }}{% endif %}
+        </div>
+        <div>
+            <button class="btn btn-sm btn-outline-light me-2" data-print><i class="bi bi-printer"></i> Print</button>
+            <a href="{{ url_for('question_paper_generator') }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-arrow-left"></i> Back</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="text-center mb-4">
+            <h4>QUESTION PAPER</h4>
+            <p>{{ class_name }} | {{ subject }} | Total Marks: {{ total_marks }} | Duration: {{ duration }}</p>
+            <p>Date: {{ date }}</p>
+            <hr style="border-color:var(--card-border)">
+        </div>
+        {% if questions %}
+        {% for q in questions %}
+        <div class="mb-3 pb-3" style="border-bottom:1px solid var(--card-border)">
+            <div class="d-flex justify-content-between">
+                <span><strong>Q{{ loop.index }}.</strong> {{ q.question_text }}</span>
+                <span class="badge bg-info">{{ q.question_type }}</span>
+            </div>
+            {% if q.option_a %}
+            <div class="ms-4 mt-2">
+                <div>A. {{ q.option_a }}</div>
+                <div>B. {{ q.option_b }}</div>
+                <div>C. {{ q.option_c }}</div>
+                <div>D. {{ q.option_d }}</div>
+            </div>
+            <div class="ms-4 mt-2">
+                <button class="btn btn-sm btn-outline-success" data-toggle="answer">Show Answer</button>
+                <span class="answer-text" style="display:none;color:var(--success)">Answer: {{ q.correct_answer }}</span>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="text-muted text-center">No questions found for this selection. <a href="{{ url_for('add_question') }}">Add questions</a> first.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

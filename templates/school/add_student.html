@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Add Student{% endblock %}
+{% block page_title %}<i class="bi bi-person-plus"></i> Add Student{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-4"><label class="form-label">Name *</label><input type="text" class="form-control" name="name" required></div>
+                <div class="col-md-4"><label class="form-label">Roll No</label><input type="text" class="form-control" name="roll_no"></div>
+                <div class="col-md-4"><label class="form-label">Class *</label>
+                    <select class="form-select" name="class_name" required><option value="">--</option>{% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select></div>
+                <div class="col-md-4"><label class="form-label">Section</label><input type="text" class="form-control" name="section" placeholder="A/B/C"></div>
+                <div class="col-md-4"><label class="form-label">Phone</label><input type="text" class="form-control" name="phone"></div>
+                <div class="col-md-4"><label class="form-label">Parent Name</label><input type="text" class="form-control" name="parent_name"></div>
+                <div class="col-12"><label class="form-label">Address</label><input type="text" class="form-control" name="address"></div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Add Student</button>
+                <a href="{{ url_for('school_students') }}" class="btn btn-outline-light ms-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

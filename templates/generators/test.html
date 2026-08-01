@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Test Generator{% endblock %}
+{% block page_title %}<i class="bi bi-clipboard-check"></i> Test Generator{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-3"><label class="form-label">Class *</label>
+                    <select class="form-select" name="class_name" required><option value="">-- Select --</option>{% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select></div>
+                <div class="col-md-3"><label class="form-label">Subject *</label>
+                    <select class="form-select" name="subject" required><option value="">-- Select --</option>{% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
+                <div class="col-md-2"><label class="form-label">Test Type</label>
+                    <select class="form-select" name="test_type"><option>Unit Test</option><option>Monthly Test</option><option>Half Yearly</option><option>Final Exam</option></select></div>
+                <div class="col-md-2"><label class="form-label">Questions</label>
+                    <input type="number" class="form-control" name="num_questions" value="10"></div>
+                <div class="col-md-2"><label class="form-label">Total Marks</label>
+                    <input type="number" class="form-control" name="total_marks" value="25"></div>
+                <div class="col-md-2"><label class="form-label">Language</label>
+                    <select class="form-select" name="language"><option value="English">English</option><option value="Nepali">Nepali</option></select></div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100"><i class="bi bi-magic"></i> Generate</button></div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

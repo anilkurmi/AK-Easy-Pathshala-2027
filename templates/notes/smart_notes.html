@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Smart Notes{% endblock %}
+{% block page_title %}<i class="bi bi-lightbulb"></i> Smart Notes & Revision{% endblock %}
+{% block content %}
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="GET" class="row g-3">
+            <div class="col-md-4"><label class="form-label">Class</label>
+                <select class="form-select" name="class"><option value="">All</option>{% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select></div>
+            <div class="col-md-4"><label class="form-label">Subject</label>
+                <select class="form-select" name="subject"><option value="">All</option>{% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
+            <div class="col-md-4 d-flex align-items-end"><button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Search</button></div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    {% for lesson in lessons %}
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header d-flex justify-content-between">
+                <span><strong>{{ lesson.chapter }}</strong></span>
+                <span class="badge bg-primary">{{ lesson.class_name }}</span>
+            </div>
+            <div class="card-body">
+                <p><strong>Subject:</strong> {{ lesson.subject }}</p>
+                {% if lesson.topic %}<p><strong>Topic:</strong> {{ lesson.topic }}</p>{% endif %}
+                {% if lesson.objectives %}<p><strong>Objectives:</strong> {{ lesson.objectives[:150] }}...</p>{% endif %}
+            </div>
+            <div class="card-footer text-muted">
+                {{ lesson.created_at.strftime('%d %b %Y') }} | {{ lesson.language }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% if not lessons %}
+    <div class="col-12 text-center text-muted py-5">
+        <i class="bi bi-journal-x fs-1"></i>
+        <p class="mt-3">No notes found. Generate lesson plans first.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

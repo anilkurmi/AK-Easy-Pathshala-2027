@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Question Bank{% endblock %}
+{% block page_title %}<i class="bi bi-database"></i> Question Bank{% endblock %}
+{% block content %}
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="GET" class="row g-3">
+            <div class="col-md-3"><label class="form-label">Class</label>
+                <select class="form-select" name="class"><option value="">All</option>{% for c in classes %}<option value="{{ c }}" {% if class_filter == c %}selected{% endif %}>{{ c }}</option>{% endfor %}</select></div>
+            <div class="col-md-3"><label class="form-label">Subject</label>
+                <select class="form-select" name="subject"><option value="">All</option>{% for s in subjects %}<option value="{{ s }}" {% if subject_filter == s %}selected{% endif %}>{{ s }}</option>{% endfor %}</select></div>
+            <div class="col-md-3"><label class="form-label">Type</label>
+                <select class="form-select" name="type"><option value="">All</option>{% for qt in question_types %}<option value="{{ qt }}">{{ qt }}</option>{% endfor %}</select></div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary me-2"><i class="bi bi-search"></i> Filter</button>
+                <a href="{{ url_for('add_question') }}" class="btn btn-success"><i class="bi bi-plus-lg"></i> Add</a>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <p class="text-muted mb-3">Total: {{ questions|length }} questions</p>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead><tr><th>#</th><th>Class</th><th>Subject</th><th>Type</th><th>Question</th><th>Diff.</th><th>Action</th></tr></thead>
+                <tbody>
+                {% for q in questions %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><span class="badge bg-primary">{{ q.class_name }}</span></td>
+                    <td>{{ q.subject }}</td>
+                    <td><span class="badge bg-info">{{ q.question_type }}</span></td>
+                    <td>{{ q.question_text[:80] }}{% if q.question_text|length > 80 %}...{% endif %}</td>
+                    <td><span class="badge bg-warning">{{ q.difficulty }}</span></td>
+                    <td>
+                        <form method="POST" action="{{ url_for('delete_question', qid=q.id) }}" onsubmit="return confirm('Delete?')">
+                            <button type="submit" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if not questions %}
+                <tr><td colspan="7" class="text-center text-muted">No questions found.</td></tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Report Card Generator{% endblock %}
+{% block page_title %}<i class="bi bi-clipboard-data"></i> Report Card Generator{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-4"><label class="form-label">Student Name *</label><input type="text" class="form-control" name="student_name" required></div>
+                <div class="col-md-4"><label class="form-label">Class *</label>
+                    <select class="form-select" name="class_name" required><option value="">--</option>{% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select></div>
+                <div class="col-md-4"><label class="form-label">Roll No</label><input type="text" class="form-control" name="roll_no"></div>
+                <div class="col-md-4"><label class="form-label">Term</label>
+                    <select class="form-select" name="term"><option>1st Term</option><option>2nd Term</option><option>3rd Term</option><option>Final</option></select></div>
+                <div class="col-md-4"><label class="form-label">Total Marks</label><input type="number" class="form-control" name="total_marks" value="500"></div>
+                <div class="col-md-4"><label class="form-label">Obtained Marks</label><input type="number" class="form-control" name="obtained_marks"></div>
+                <div class="col-md-4"><label class="form-label">Grade</label>
+                    <select class="form-select" name="grade"><option>A+</option><option>A</option><option>B+</option><option>B</option><option>C</option><option>D</option><option>F</option></select></div>
+                <div class="col-md-4"><label class="form-label">Remarks</label><input type="text" class="form-control" name="remarks"></div>
+            </div>
+            <div class="mt-3"><label class="form-label">Subjects Data (JSON format)</label>
+                <textarea class="form-control" name="subjects_data" rows="5" placeholder='[{"subject":"Math","marks":85},{"subject":"Science","marks":90}]'></textarea></div>
+            <div class="mt-3"><button type="submit" class="btn btn-primary"><i class="bi bi-magic"></i> Generate Report Card</button></div>
+        </form>
+    </div>
+</div>
+{% endblock %}

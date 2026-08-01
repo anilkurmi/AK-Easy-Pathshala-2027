@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Worksheet Generator{% endblock %}
+{% block page_title %}<i class="bi bi-file-earmark"></i> Worksheet Generator{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-4"><label class="form-label">Title *</label><input type="text" class="form-control" name="title" required></div>
+                <div class="col-md-4"><label class="form-label">Class *</label>
+                    <select class="form-select" name="class_name" required><option value="">--</option>{% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select></div>
+                <div class="col-md-4"><label class="form-label">Subject *</label>
+                    <select class="form-select" name="subject" required><option value="">--</option>{% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
+                <div class="col-md-4"><label class="form-label">Chapter</label><input type="text" class="form-control" name="chapter"></div>
+                <div class="col-md-4"><label class="form-label">Total Marks</label><input type="number" class="form-control" name="total_marks" value="20"></div>
+                <div class="col-md-4"><label class="form-label">Language</label>
+                    <select class="form-select" name="language"><option value="English">English</option><option value="Nepali">Nepali</option></select></div>
+            </div>
+            <div class="mt-3"><label class="form-label">Worksheet Content</label>
+                <textarea class="form-control" name="content" rows="10" placeholder="Write worksheet questions here..."></textarea></div>
+            <div class="mt-3"><button type="submit" class="btn btn-primary"><i class="bi bi-magic"></i> Generate Worksheet</button></div>
+        </form>
+    </div>
+</div>
+{% endblock %}

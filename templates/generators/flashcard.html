@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Flash Cards{% endblock %}
+{% block page_title %}<i class="bi bi-card-heading"></i> Flash Card Generator{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">Create Flash Card</div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="row g-3">
+                        <div class="col-6"><label class="form-label">Class</label>
+                            <select class="form-select" name="class_name" required><option value="">--</option>{% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select></div>
+                        <div class="col-6"><label class="form-label">Subject</label>
+                            <select class="form-select" name="subject" required><option value="">--</option>{% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
+                        <div class="col-12"><label class="form-label">Chapter</label><input type="text" class="form-control" name="chapter"></div>
+                        <div class="col-12"><label class="form-label">Front (Question/Term)</label><input type="text" class="form-control" name="front" required></div>
+                        <div class="col-12"><label class="form-label">Back (Answer/Definition)</label><input type="text" class="form-control" name="back" required></div>
+                        <div class="col-6"><label class="form-label">Language</label>
+                            <select class="form-select" name="language"><option value="English">English</option><option value="Nepali">Nepali</option></select></div>
+                        <div class="col-6 d-flex align-items-end"><button type="submit" class="btn btn-primary w-100">Create Card</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Your Flash Cards ({{ cards|length }})</div>
+            <div class="card-body" style="max-height:500px;overflow-y:auto">
+                {% for card in cards %}
+                <div class="flashcard mb-3 p-3" style="background:rgba(108,99,255,0.1);border-radius:10px;cursor:pointer;min-height:80px">
+                    <div class="flashcard-front"><strong>{{ card.front }}</strong></div>
+                    <div class="flashcard-back" style="display:none;color:var(--success);margin-top:8px">{{ card.back }}</div>
+                    <small class="text-muted">{{ card.class_name }} | {{ card.subject }}</small>
+                </div>
+                {% endfor %}
+                {% if not cards %}<p class="text-muted text-center">No flash cards yet.</p>{% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+document.querySelectorAll('.flashcard').forEach(card => {
+    card.addEventListener('click', function() {
+        const back = this.querySelector('.flashcard-back');
+        back.style.display = back.style.display === 'none' ? 'block' : 'none';
+    });
+});
+</script>
+{% endblock %}

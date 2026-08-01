@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Add Teacher{% endblock %}
+{% block page_title %}<i class="bi bi-person-plus"></i> Add Teacher{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-4"><label class="form-label">Name *</label><input type="text" class="form-control" name="name" required></div>
+                <div class="col-md-4"><label class="form-label">Subject</label>
+                    <select class="form-select" name="subject"><option value="">--</option>{% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
+                <div class="col-md-4"><label class="form-label">Qualification</label><input type="text" class="form-control" name="qualification"></div>
+                <div class="col-md-4"><label class="form-label">Phone</label><input type="text" class="form-control" name="phone"></div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Add Teacher</button>
+                <a href="{{ url_for('school_teachers') }}" class="btn btn-outline-light ms-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

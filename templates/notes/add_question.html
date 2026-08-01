@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Add Question{% endblock %}
+{% block page_title %}<i class="bi bi-plus-circle"></i> Add Question{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-3"><label class="form-label">Class *</label>
+                    <select class="form-select" name="class_name" required><option value="">--</option>{% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}</select></div>
+                <div class="col-md-3"><label class="form-label">Subject *</label>
+                    <select class="form-select" name="subject" required><option value="">--</option>{% for s in subjects %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
+                <div class="col-md-3"><label class="form-label">Chapter</label><input type="text" class="form-control" name="chapter"></div>
+                <div class="col-md-3"><label class="form-label">Question Type *</label>
+                    <select class="form-select" name="question_type" required><option value="">--</option>{% for qt in question_types %}<option value="{{ qt }}">{{ qt }}</option>{% endfor %}</select></div>
+                <div class="col-md-6"><label class="form-label">Question Text *</label>
+                    <textarea class="form-control" name="question_text" rows="3" required></textarea></div>
+                <div class="col-md-6">
+                    <div class="row g-2">
+                        <div class="col-6"><label class="form-label">Option A</label><input type="text" class="form-control" name="option_a"></div>
+                        <div class="col-6"><label class="form-label">Option B</label><input type="text" class="form-control" name="option_b"></div>
+                        <div class="col-6"><label class="form-label">Option C</label><input type="text" class="form-control" name="option_c"></div>
+                        <div class="col-6"><label class="form-label">Option D</label><input type="text" class="form-control" name="option_d"></div>
+                    </div>
+                </div>
+                <div class="col-md-3"><label class="form-label">Correct Answer</label><input type="text" class="form-control" name="correct_answer"></div>
+                <div class="col-md-3"><label class="form-label">Difficulty</label>
+                    <select class="form-select" name="difficulty">{% for d in difficulties %}<option value="{{ d }}">{{ d }}</option>{% endfor %}</select></div>
+                <div class="col-md-3"><label class="form-label">Language</label>
+                    <select class="form-select" name="language"><option value="English">English</option><option value="Nepali">Nepali</option></select></div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Add Question</button>
+                <a href="{{ url_for('question_bank') }}" class="btn btn-outline-light ms-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
