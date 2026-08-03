@@ -59,19 +59,27 @@
                 <li><a href="{{ url_for('upload_image') }}" class="{% if request.endpoint == 'upload_image' %}active{% endif %}"><i class="bi bi-cloud-upload"></i> Image Upload</a></li>
                 <li><a href="{{ url_for('ai_assistant') }}" class="{% if request.endpoint == 'ai_assistant' %}active{% endif %}"><i class="bi bi-robot"></i> AI Assistant</a></li>
                 <li><a href="{{ url_for('cdc_info') }}" class="{% if request.endpoint == 'cdc_info' %}active{% endif %}"><i class="bi bi-globe"></i> CDC Info</a></li>
+
+                <li class="nav-section">ACCOUNT</li>
+                <li><a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
             </ul>
+            <div class="sidebar-footer">
+                <span><i class="bi bi-calendar"></i> {{ today if today else '' }}</span>
+                <small>© {{ today.year if today else '' }} AK Easy Pathshala</small>
+            </div>
         </nav>
 
         <main class="main-content">
             <div class="topbar">
                 <button class="btn btn-link" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
-                <h5 class="mb-0">{% block page_title %}Dashboard{% endblock %}</h5>
-                <div class="d-flex align-items-center gap-3">
-                    <span class="text-muted"><i class="bi bi-calendar"></i> {{ today if today else '' }}</span>
-                    <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm"><i class="bi bi-box-arrow-right"></i> Logout</a>
-                </div>
+                <h4 class="topbar-title mb-0"><i class="bi bi-book-half"></i> AK Easy Pathshala</h4>
+                <div class="topbar-end"></div>
             </div>
             <div class="content-area">
+                <div class="page-header">
+                    <h4 class="mb-0">{% block page_title %}Dashboard{% endblock %}</h4>
+                    <span class="text-muted"><i class="bi bi-calendar"></i> {{ today if today else '' }}</span>
+                </div>
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}
