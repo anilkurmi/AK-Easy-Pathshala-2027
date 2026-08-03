@@ -274,6 +274,111 @@ body {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 50%, #0f1235 100%);
+    flex-direction: column;
+    padding: 20px;
+}
+
+.front-banner {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(108, 99, 255, 0.25);
+}
+
+.front-banner .banner-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.85) 0%, rgba(187, 134, 252, 0.85) 50%, rgba(0, 188, 212, 0.8) 100%);
+    z-index: 1;
+}
+
+.front-banner .banner-content {
+    position: relative;
+    z-index: 2;
+    padding: 35px 25px;
+    text-align: center;
+}
+
+.front-banner .banner-logo {
+    width: 70px;
+    height: 70px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 2rem;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.front-banner .banner-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 5px;
+    letter-spacing: 0.5px;
+}
+
+.front-banner .banner-tagline {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+    margin: 0 0 15px;
+    font-weight: 400;
+}
+
+.front-banner .banner-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.front-banner .banner-info span {
+    color: rgba(255,255,255,0.9);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.front-banner .banner-info i {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.front-banner .banner-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.front-banner .banner-social a {
+    width: 38px;
+    height: 38px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.front-banner .banner-social a:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .login-card {

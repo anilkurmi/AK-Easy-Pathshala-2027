@@ -18,6 +18,17 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+
+@app.context_processor
+def inject_site_config():
+    return {
+        'SOCIAL_FACEBOOK': app.config.get('SOCIAL_FACEBOOK'),
+        'SOCIAL_INSTAGRAM': app.config.get('SOCIAL_INSTAGRAM'),
+        'SOCIAL_TWITTER': app.config.get('SOCIAL_TWITTER'),
+        'SITE_EMAIL': app.config.get('SITE_EMAIL'),
+        'SITE_PHONE': app.config.get('SITE_PHONE'),
+    }
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))

@@ -2,6 +2,25 @@
 {% block title %}Login - AK Easy Pathshala{% endblock %}
 {% block fullpage %}
 <div class="login-page">
+    <div class="front-banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <div class="banner-logo">
+                <i class="bi bi-book-half"></i>
+            </div>
+            <h1 class="banner-title">AK Easy Pathshala</h1>
+            <p class="banner-tagline">AI Your Teaching Partner</p>
+            <div class="banner-info">
+                <span><i class="bi bi-envelope"></i> {{ SITE_EMAIL }}</span>
+                <span><i class="bi bi-telephone"></i> {{ SITE_PHONE }}</span>
+            </div>
+            <div class="banner-social">
+                <a href="{{ SOCIAL_FACEBOOK }}" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="{{ SOCIAL_INSTAGRAM }}" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="{{ SOCIAL_TWITTER }}" target="_blank" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+            </div>
+        </div>
+    </div>
     <div class="login-card">
         <div class="login-header">
             <i class="bi bi-book-half"></i>

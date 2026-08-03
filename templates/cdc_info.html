@@ -3,9 +3,18 @@
 {% block page_title %}<i class="bi bi-globe"></i> Nepal CDC Curriculum Information{% endblock %}
 {% block content %}
 <div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body text-center py-4">
+                <img src="{{ url_for('static', filename='images/cdc-logo.png') }}" alt="CDC Nepal Logo" class="img-fluid mb-3" style="max-height: 120px;">
+                <h4 class="mb-1">Curriculum Development Centre (CDC)</h4>
+                <p class="text-muted mb-0">Government of Nepal, Ministry of Education, Science and Technology</p>
+            </div>
+        </div>
+    </div>
     <div class="col-md-8">
         <div class="card mb-4">
-            <div class="card-header">Curriculum Development Centre (CDC) - Nepal</div>
+            <div class="card-header">About CDC</div>
             <div class="card-body">
                 <h5>About CDC</h5>
                 <p>The Curriculum Development Centre (CDC) is the national body responsible for developing and revising the curriculum for school education in Nepal. It operates under the Ministry of Education, Science and Technology.</p>
@@ -22,7 +31,7 @@
                 <h5 class="mt-4">Academic Structure</h5>
                 <div class="table-responsive">
                     <table class="table table-hover">
-                        <thead><tr><th>Level</th><th>Grades</th><th>Duration</th></tr></thead>
+                        <thead><tr><th>Level</th><th>Grades</th><th>Duration</th></thead>
                         <tbody>
                             <tr><td>Early Childhood</td><td>Nursery, LKG, UKG</td><td>3 Years</td></tr>
                             <tr><td>Primary</td><td>Grade 1 - 5</td><td>5 Years</td></tr>
