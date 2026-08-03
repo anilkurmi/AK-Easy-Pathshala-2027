@@ -689,6 +689,17 @@ def init_db():
             print("Teacher: teacher@akeasypathshala.com / teacher123")
 
 
+@app.route('/curriculum')
+@login_required
+def curriculum_list():
+    class_filter = request.args.get('class', '')
+    subjects = Subject.query
+    if class_filter:
+        subjects = subjects.filter_by(class_name=class_filter)
+    subjects = subjects.order_by(Subject.class_name, Subject.name).all()
+    return render_template('curriculum/list.html', subjects=subjects, classes=CLASS_CHOICES, class_filter=class_filter)
+
+
 @app.route('/curriculum/subjects/<int:sid>/units')
 @login_required
 def units_list(sid):
