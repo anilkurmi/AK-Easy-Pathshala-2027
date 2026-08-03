@@ -4,30 +4,149 @@
 {% block content %}
 
 <div class="hero-banner mb-4">
-    <div class="hero-banner-bg" {% if BANNER_IMAGE_URL and 'http' in BANNER_IMAGE_URL %}style="background-image:url('{{ BANNER_IMAGE_URL }}')"{% elif BANNER_IMAGE_URL and BANNER_IMAGE_URL != 'static/images/banner-default.jpg' %}style="background-image:url('{{ url_for('static', filename=BANNER_IMAGE_URL.replace('static/', '')) }}')"{% endif %}></div>
+    <div class="hero-scene" aria-hidden="true">
+        <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0b1035"/>
+                    <stop offset="38%" stop-color="#33276b"/>
+                    <stop offset="68%" stop-color="#a93f66"/>
+                    <stop offset="100%" stop-color="#ffb36b"/>
+                </linearGradient>
+                <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#fff7d6" stop-opacity="1"/>
+                    <stop offset="55%" stop-color="#ffd98a" stop-opacity="0.85"/>
+                    <stop offset="100%" stop-color="#ffb36b" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="mountainGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3a2f6b"/>
+                    <stop offset="100%" stop-color="#241f4a"/>
+                </linearGradient>
+            </defs>
+
+            <rect width="1200" height="400" fill="url(#skyGrad)"/>
+
+            <circle class="sun-glow" cx="960" cy="292" r="120" fill="url(#sunGrad)"/>
+            <circle cx="960" cy="292" r="46" fill="#fff3c4" opacity="0.95"/>
+
+            <g class="cloud">
+                <ellipse cx="300" cy="90" rx="70" ry="16" fill="#ffffff" opacity="0.25"/>
+                <ellipse cx="340" cy="80" rx="45" ry="13" fill="#ffffff" opacity="0.2"/>
+            </g>
+            <g class="cloud cloud-slow">
+                <ellipse cx="760" cy="70" rx="85" ry="17" fill="#ffffff" opacity="0.22"/>
+                <ellipse cx="720" cy="60" rx="50" ry="12" fill="#ffffff" opacity="0.18"/>
+            </g>
+
+            <polygon points="0,340 150,250 300,320 480,230 620,300 760,240 920,310 1080,260 1200,330 1200,400 0,400" fill="#453a80" opacity="0.85"/>
+            <polygon points="0,365 200,300 380,355 560,275 740,345 900,300 1080,355 1200,325 1200,400 0,400" fill="url(#mountainGrad)"/>
+
+            <g class="everest">
+                <polygon points="560,370 705,185 785,135 855,205 985,370" fill="#201b44"/>
+                <polygon points="705,185 785,135 855,205 822,228 758,228 730,208" fill="#f4f8ff"/>
+                <polygon points="735,205 762,228 782,228" fill="#dfe9f7" opacity="0.7"/>
+                <polygon points="805,222 832,205 820,228" fill="#dfe9f7" opacity="0.6"/>
+            </g>
+
+            <g class="pashupatinath">
+                <rect x="250" y="325" width="150" height="22" rx="3" fill="#c9a227"/>
+                <rect x="268" y="290" width="114" height="35" fill="#8f5b18"/>
+                <path d="M246,292 Q325,250 404,292 Q325,274 246,292 Z" fill="#6e4510"/>
+                <rect x="283" y="266" width="84" height="26" fill="#8f5b18"/>
+                <path d="M268,268 Q325,232 382,268 Q325,252 268,268 Z" fill="#6e4510"/>
+                <circle cx="325" cy="228" r="8" fill="#ffd700"/>
+                <rect x="322" y="200" width="6" height="22" fill="#ffd700"/>
+                <circle cx="325" cy="197" r="5" fill="#ffd700"/>
+                <rect x="258" y="340" width="10" height="14" fill="#a97f1e"/>
+                <rect x="382" y="340" width="10" height="14" fill="#a97f1e"/>
+                <rect x="282" y="334" width="6" height="10" fill="#c9a227"/>
+                <rect x="362" y="334" width="6" height="10" fill="#c9a227"/>
+            </g>
+
+            <g class="lumbini">
+                <rect x="832" y="322" width="170" height="20" rx="3" fill="#9aa3b2"/>
+                <rect x="862" y="272" width="110" height="50" fill="#f6f7f9"/>
+                <path d="M850,274 L917,244 L984,274 Z" fill="#d6dbe3"/>
+                <rect x="878" y="290" width="8" height="32" fill="#c2c8d2"/>
+                <rect x="906" y="290" width="8" height="32" fill="#c2c8d2"/>
+                <rect x="934" y="290" width="8" height="32" fill="#c2c8d2"/>
+                <rect x="962" y="290" width="8" height="32" fill="#c2c8d2"/>
+                <rect x="870" y="272" width="94" height="8" fill="#d9dde3"/>
+                <circle cx="917" cy="238" r="8" fill="#ffd700"/>
+                <rect x="913" y="244" width="8" height="4" fill="#d9dde3"/>
+                <g class="ashoka-pillar">
+                    <rect x="1008" y="232" width="13" height="108" fill="#a9b1bd"/>
+                    <ellipse cx="1014" cy="228" rx="14" ry="6" fill="#c2c8d2"/>
+                    <path d="M1002,222 Q1014,214 1026,222 L1021,228 L1007,228 Z" fill="#c2c8d2"/>
+                </g>
+            </g>
+
+            <g class="buddha">
+                <circle cx="1108" cy="252" r="42" fill="#ffd98a" opacity="0.2"/>
+                <circle cx="1108" cy="244" r="19" fill="#e2b452"/>
+                <path d="M1082,330 Q1084,280 1108,264 L1108,264 Q1132,280 1134,330 Z" fill="#e2b452"/>
+                <path d="M1086,320 Q1090,290 1108,276 L1126,290 Q1130,305 1130,320 Z" fill="#c9972f"/>
+                <circle cx="1098" cy="302" r="6" fill="#e2b452"/>
+                <circle cx="1118" cy="302" r="6" fill="#e2b452"/>
+                <ellipse cx="1108" cy="330" rx="26" ry="8" fill="#a9701f"/>
+            </g>
+
+            <g class="nepal-flag">
+                <rect x="30" y="36" width="7" height="180" fill="#8f97a3"/>
+                <circle cx="33" cy="32" r="7" fill="#ffd700"/>
+                <g class="flag-waving">
+                    <polygon points="37,58 168,98 106,128 168,158 37,198" fill="#003893"/>
+                    <polygon points="46,66 156,99 104,128 156,157 46,188" fill="#dc143c"/>
+                    <path d="M70,88 A16,16 0 1,1 102,88 A16,16 0 1,1 70,88 Z M78,88 A8,8 0 1,0 94,88 A8,8 0 1,0 78,88 Z" fill="#ffffff"/>
+                    <circle cx="102" cy="146" r="14" fill="#ffffff"/>
+                </g>
+            </g>
+
+            <path d="M0,372 Q200,348 420,366 T840,360 T1200,368 L1200,400 0,400 Z" fill="#161d3a"/>
+            <g class="pines" fill="#232c52">
+                <polygon points="60,366 70,342 80,366"/>
+                <polygon points="120,372 130,352 140,372"/>
+                <polygon points="430,368 440,348 450,368"/>
+                <polygon points="540,370 550,355 560,370"/>
+                <polygon points="1180,366 1190,350 1200,366"/>
+            </g>
+
+            <g class="birds" stroke="#2b2450" stroke-width="3" fill="none" stroke-linecap="round">
+                <path d="M600,120 q10,-10 20,0 M620,120 q10,-10 20,0"/>
+                <path d="M640,100 q8,-8 16,0 M656,100 q8,-8 16,0"/>
+            </g>
+        </svg>
+    </div>
     <div class="hero-banner-overlay"></div>
     <div class="hero-banner-content">
-        <div class="hero-logo-wrap hero-logo-{{ LOGO_POSITION }}">
-            {% if LOGO_IMAGE_URL and 'http' in LOGO_IMAGE_URL %}
-            <img src="{{ LOGO_IMAGE_URL }}" alt="{{ SITE_NAME }} Logo" class="hero-logo-img">
-            {% elif LOGO_IMAGE_URL %}
-            <img src="{{ url_for('static', filename=LOGO_IMAGE_URL.replace('static/', '')) }}" alt="{{ SITE_NAME }} Logo" class="hero-logo-img">
-            {% else %}
-            <div class="hero-logo-icon"><i class="bi bi-book-half"></i></div>
-            {% endif %}
-        </div>
-        <h1 class="hero-title">{{ SITE_NAME }}</h1>
-        <p class="hero-tagline">AI Your Teaching Partner</p>
-        <div class="hero-meta">
-            <span><i class="bi bi-geo-alt"></i> {{ SITE_ADDRESS }}</span>
-            <span><i class="bi bi-telephone"></i> {{ SITE_PHONE }}</span>
-            <span><i class="bi bi-envelope"></i> {{ SITE_EMAIL }}</span>
-        </div>
-        <div class="hero-social">
-            <a href="{{ SOCIAL_FACEBOOK }}" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="{{ SOCIAL_INSTAGRAM }}" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="{{ SOCIAL_TWITTER }}" target="_blank" title="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="{{ SOCIAL_YOUTUBE }}" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
+        <div class="hero-glass">
+            <div class="hero-logo-wrap hero-logo-{{ LOGO_POSITION }}">
+                {% if LOGO_IMAGE_URL and 'http' in LOGO_IMAGE_URL %}
+                <img src="{{ LOGO_IMAGE_URL }}" alt="{{ SITE_NAME }} Logo" class="hero-logo-img">
+                {% elif LOGO_IMAGE_URL %}
+                <img src="{{ url_for('static', filename=LOGO_IMAGE_URL.replace('static/', '')) }}" alt="{{ SITE_NAME }} Logo" class="hero-logo-img">
+                {% else %}
+                <div class="hero-logo-icon"><i class="bi bi-book-half"></i></div>
+                {% endif %}
+            </div>
+            <h1 class="hero-title">{{ SITE_NAME }}</h1>
+            <p class="hero-tagline">AI Your Teaching Partner</p>
+            <div class="hero-chips">
+                <span class="chip"><i class="bi bi-mortarboard"></i> CDC Nepal Curriculum</span>
+                <span class="chip"><i class="bi bi-stars"></i> Grade 1-12</span>
+                <span class="chip"><i class="bi bi-robot"></i> AI Powered</span>
+            </div>
+            <div class="hero-meta">
+                <span><i class="bi bi-geo-alt"></i> {{ SITE_ADDRESS }}</span>
+                <span><i class="bi bi-telephone"></i> {{ SITE_PHONE }}</span>
+                <span><i class="bi bi-envelope"></i> {{ SITE_EMAIL }}</span>
+            </div>
+            <div class="hero-social">
+                <a href="{{ SOCIAL_FACEBOOK }}" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="{{ SOCIAL_INSTAGRAM }}" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="{{ SOCIAL_TWITTER }}" target="_blank" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+                <a href="{{ SOCIAL_YOUTUBE }}" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
+            </div>
         </div>
     </div>
 </div>
