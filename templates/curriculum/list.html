@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Curriculum - AK Easy Pathshala{% endblock %}
+{% block page_title %}<i class="bi bi-book"></i> CDC Nepal Curriculum{% endblock %}
+{% block content %}
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="GET" class="row g-3">
+            <div class="col-md-3"><label class="form-label">Select Class</label>
+                <select class="form-select" name="class"><option value="">All Classes</option>{% for c in classes %}<option value="{{ c }}" {% if class_filter==c %}selected{% endif %}>{{ c }}</option>{% endfor %}</select></div>
+            <div class="col-md-3 d-flex align-items-end"><button type="submit" class="btn btn-primary w-100"><i class="bi bi-search"></i> Filter</button></div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    {% for s in subjects %}
+    <div class="col-md-4 col-6 mb-3">
+        <a href="{{ url_for('units_list', sid=s.id) }}" class="generator-card">
+            <i class="bi bi-book"></i>
+            <h6>{{ s.name }}</h6>
+            <p>{{ s.class_name }}</p>
+        </a>
+    </div>
+    {% endfor %}
+    {% if not subjects %}
+    <div class="col-12 text-center text-muted py-5"><i class="bi bi-book fs-1"></i><p class="mt-3">No subjects found for this class.</p></div>
+    {% endif %}
+</div>
+{% endblock %}

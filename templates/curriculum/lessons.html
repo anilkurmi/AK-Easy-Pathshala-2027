@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Lessons - {{ unit.name }}{% endblock %}
+{% block page_title %}Lessons: {{ unit.name }}{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between mb-4">
+    <div><a href="{{ url_for('curriculum_list') }}" class="btn btn-outline-light btn-sm"><i class="bi bi-arrow-left"></i> Back</a> <a href="{{ url_for('units_list', sid=unit.subject_id) }}" class="btn btn-outline-light btn-sm">{{ unit.subject.name }}</a></div>
+    <a href="{{ url_for('add_lesson', uid=unit.id) }}" class="btn btn-success btn-sm"><i class="bi bi-plus-lg"></i> Add Lesson</a>
+</div>
+<div class="card"><div class="card-body">
+    {% for l in lessons %}
+    <div class="d-flex align-items-center mb-3 pb-3" style="border-bottom:1px solid var(--card-border)">
+        <span class="badge bg-primary me-3">{{ l.order }}</span>
+        <div><strong>{{ l.name }}</strong><br><small class="text-muted">{{ l.description or '' }}</small></div>
+    </div>
+    {% endfor %}
+    {% if not lessons %}<p class="text-muted text-center">No lessons yet. Add one!</p>{% endif %}
+</div></div>
+{% endblock %}

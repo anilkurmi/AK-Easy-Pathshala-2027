@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Add Unit{% endblock %}
+{% block page_title %}Add Unit - {{ subject.name }}{% endblock %}
+{% block content %}
+<div class="card"><div class="card-body">
+    <form method="POST">
+        <div class="row g-3">
+            <div class="col-md-6"><label class="form-label">Unit Name *</label><input type="text" class="form-control" name="name" required></div>
+            <div class="col-md-6"><label class="form-label">Order</label><input type="number" class="form-control" name="order" value="1"></div>
+            <div class="col-12"><label class="form-label">Description</label><textarea class="form-control" name="description" rows="3"></textarea></div>
+        </div>
+        <div class="mt-4"><button type="submit" class="btn btn-primary">Add Unit</button> <a href="{{ url_for('units_list', sid=subject.id) }}" class="btn btn-outline-light">Cancel</a></div>
+    </form>
+</div></div>
+{% endblock %}

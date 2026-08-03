@@ -24,6 +24,8 @@
                 </div>
             </div>
             <ul class="sidebar-nav">
+                <li class="nav-section">CURRICULUM</li>
+                <li><a href="{{ url_for('curriculum_list') }}" class="{% if request.endpoint == 'curriculum_list' %}active{% endif %}"><i class="bi bi-book"></i> CDC Curriculum</a></li>
                 <li class="nav-section">MAIN</li>
                 <li><a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
 

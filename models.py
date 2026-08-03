@@ -182,6 +182,36 @@ class UploadedImage(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
+class Subject(db.Model):
+    __tablename__ = 'subjects'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    code = db.Column(db.String(20), unique=True)
+    class_name = db.Column(db.String(50), nullable=False)
+    max_marks = db.Column(db.Integer, default=100)
+    units = db.relationship('Unit', backref='subject', lazy=True)
+
+
+class Unit(db.Model):
+    __tablename__ = 'units'
+    id = db.Column(db.Integer, primary_key=True)
+    subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'), nullable=False)
+    name = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.Text)
+    order = db.Column(db.Integer, default=1)
+    lessons = db.relationship('Lesson', backref='unit', lazy=True)
+
+
+class Lesson(db.Model):
+    __tablename__ = 'lessons'
+    id = db.Column(db.Integer, primary_key=True)
+    unit_id = db.Column(db.Integer, db.ForeignKey('units.id'), nullable=False)
+    name = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.Text)
+    content = db.Column(db.Text)
+    order = db.Column(db.Integer, default=1)
+
+
 CLASS_CHOICES = [
     'Nursery', 'LKG', 'UKG',
     'Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5',

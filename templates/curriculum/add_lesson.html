@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Add Lesson{% endblock %}
+{% block page_title %}Add Lesson - {{ unit.name }}{% endblock %}
+{% block content %}
+<div class="card"><div class="card-body">
+    <form method="POST">
+        <div class="row g-3">
+            <div class="col-md-6"><label class="form-label">Lesson Name *</label><input type="text" class="form-control" name="name" required></div>
+            <div class="col-md-6"><label class="form-label">Order</label><input type="number" class="form-control" name="order" value="1"></div>
+            <div class="col-12"><label class="form-label">Description</label><textarea class="form-control" name="description" rows="2"></textarea></div>
+            <div class="col-12"><label class="form-label">Content</label><textarea class="form-control" name="content" rows="5"></textarea></div>
+        </div>
+        <div class="mt-4"><button type="submit" class="btn btn-primary">Add Lesson</button> <a href="{{ url_for('lessons_list', uid=unit.id) }}" class="btn btn-outline-light">Cancel</a></div>
+    </form>
+</div></div>
+{% endblock %}

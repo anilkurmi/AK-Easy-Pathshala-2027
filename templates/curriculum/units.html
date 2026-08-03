@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Units - {{ subject.name }}{% endblock %}
+{% block page_title %}Units: {{ subject.name }} ({{ subject.class_name }}){% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between mb-4">
+    <div><a href="{{ url_for('curriculum_list') }}" class="btn btn-outline-light btn-sm"><i class="bi bi-arrow-left"></i> Back</a> <span class="badge bg-primary">{{ subject.class_name }}</span> <span class="badge bg-info">{{ subject.name }}</span></div>
+    <a href="{{ url_for('add_unit', sid=subject.id) }}" class="btn btn-success btn-sm"><i class="bi bi-plus-lg"></i> Add Unit</a>
+</div>
+<div class="row">
+    {% for u in units %}
+    <div class="col-md-4 col-6 mb-3">
+        <a href="{{ url_for('lessons_list', uid=u.id) }}" class="generator-card">
+            <i class="bi bi-folder"></i>
+            <h6>{{ u.name }}</h6>
+            <p>{{ u.lessons|length }} lessons</p>
+        </a>
+    </div>
+    {% endfor %}
+    {% if not units %}<div class="col-12 text-center text-muted py-5"><p>No units yet. Add one!</p></div>{% endif %}
+</div>
+{% endblock %}
