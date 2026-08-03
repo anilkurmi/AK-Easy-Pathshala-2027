@@ -8,13 +8,13 @@
         <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="skyGrad2" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#3a4fa8"/>
-                    <stop offset="45%" stop-color="#7aa2d4"/>
-                    <stop offset="78%" stop-color="#f2c57c"/>
-                    <stop offset="100%" stop-color="#ff9a6b"/>
+                    <stop offset="0%" stop-color="#2b3f7a"/>
+                    <stop offset="45%" stop-color="#6d8fce"/>
+                    <stop offset="80%" stop-color="#f0c98a"/>
+                    <stop offset="100%" stop-color="#ffa06b"/>
                 </linearGradient>
                 <radialGradient id="sunGrad2" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#fff7d6" stop-opacity="1"/>
+                    <stop offset="0%" stop-color="#fffbe6" stop-opacity="1"/>
                     <stop offset="60%" stop-color="#ffd98a" stop-opacity="0.8"/>
                     <stop offset="100%" stop-color="#ffd98a" stop-opacity="0"/>
                 </radialGradient>
@@ -26,71 +26,80 @@
 
             <rect width="1200" height="400" fill="url(#skyGrad2)"/>
 
-            <circle class="sun-glow" cx="600" cy="270" r="150" fill="url(#sunGrad2)"/>
-            <circle cx="600" cy="270" r="45" fill="#fff3c4" opacity="0.95"/>
+            <circle class="sun-glow" cx="600" cy="250" r="160" fill="url(#sunGrad2)"/>
+            <circle cx="600" cy="250" r="42" fill="#fff3c4" opacity="0.95"/>
 
             <g class="cloud">
-                <ellipse cx="300" cy="120" rx="75" ry="16" fill="#ffffff" opacity="0.4"/>
-                <ellipse cx="345" cy="110" rx="48" ry="12" fill="#ffffff" opacity="0.35"/>
+                <ellipse cx="280" cy="110" rx="80" ry="17" fill="#ffffff" opacity="0.45"/>
+                <ellipse cx="330" cy="100" rx="50" ry="13" fill="#ffffff" opacity="0.4"/>
             </g>
             <g class="cloud cloud-slow">
-                <ellipse cx="820" cy="100" rx="90" ry="18" fill="#ffffff" opacity="0.35"/>
-                <ellipse cx="780" cy="90" rx="52" ry="12" fill="#ffffff" opacity="0.3"/>
+                <ellipse cx="840" cy="90" rx="95" ry="18" fill="#ffffff" opacity="0.4"/>
+                <ellipse cx="795" cy="80" rx="55" ry="13" fill="#ffffff" opacity="0.35"/>
+            </g>
+            <g class="cloud cloud-slow2">
+                <ellipse cx="1050" cy="160" rx="60" ry="13" fill="#ffffff" opacity="0.3"/>
             </g>
 
-            <polygon points="0,360 200,290 420,345 600,270 800,340 1000,285 1200,355 1200,400 0,400" fill="#6b7bbf" opacity="0.55"/>
-            <polygon points="0,370 250,315 500,360 720,300 950,360 1200,330 1200,400 0,400" fill="#55639f" opacity="0.75"/>
+            <polygon points="0,360 200,290 420,345 600,270 800,340 1000,285 1200,355 1200,400 0,400" fill="#7587c9" opacity="0.5"/>
+            <polygon points="0,372 250,315 500,362 720,300 950,362 1200,330 1200,400 0,400" fill="#5d6aa8" opacity="0.75"/>
 
             <g class="mountain-main">
-                <polygon points="420,372 600,150 780,372" fill="#3c3a6e"/>
-                <polygon points="460,372 600,210 740,372" fill="#4a4780"/>
-                <polygon points="600,150 660,230 540,230" fill="url(#snowGrad)"/>
-                <polygon points="600,150 600,230 540,230" fill="#ffffff" opacity="0.85"/>
-                <polygon points="560,230 600,190 640,230" fill="#f2f7ff"/>
-                <polygon points="520,260 600,190 680,260 640,300 560,300" fill="#e8f0ff"/>
-                <path d="M600,190 L620,260 L610,310 L600,290 L585,270 L565,240 Z" fill="#d7e4ff" opacity="0.6"/>
-                <polygon points="610,310 615,340 605,340 600,290" fill="#ffffff" opacity="0.5"/>
-                <polygon points="420,372 560,288 640,288 720,310 780,372" fill="#2e6b40"/>
-                <polygon points="455,372 575,300 690,315 745,372" fill="#3c7f4e"/>
-                <polygon points="500,372 600,312 700,322 730,372" fill="#4c925a"/>
-                <polygon points="560,372 600,322 660,372" fill="#5aa367"/>
-                <ellipse cx="500" cy="352" rx="22" ry="10" fill="#2a5f3a"/>
-                <ellipse cx="700" cy="358" rx="18" ry="9" fill="#2a5f3a"/>
-                <ellipse cx="640" cy="348" rx="15" ry="8" fill="#3c7f4e"/>
+                <polygon points="380,372 600,130 820,372" fill="#3c3a6e"/>
+                <polygon points="430,372 600,185 770,372" fill="#4a4780"/>
+                <polygon points="600,130 670,215 530,215" fill="url(#snowGrad)"/>
+                <polygon points="600,130 600,215 530,215" fill="#ffffff" opacity="0.9"/>
+                <polygon points="555,215 600,170 645,215" fill="#f6faff"/>
+                <polygon points="510,250 600,170 690,250 645,295 555,295" fill="#ecf3ff"/>
+                <path d="M600,170 L625,250 L615,305 L600,280 L582,260 L558,230 Z" fill="#d9e5ff" opacity="0.6"/>
+                <polygon points="615,305 618,338 606,338 600,280" fill="#ffffff" opacity="0.55"/>
+                <polygon points="380,372 540,275 650,275 740,305 820,372" fill="#2e6b40"/>
+                <polygon points="420,372 560,288 700,300 760,372" fill="#3c7f4e"/>
+                <polygon points="480,372 600,302 720,310 745,372" fill="#4c925a"/>
+                <polygon points="560,372 600,310 660,372" fill="#5aa367"/>
+                <ellipse cx="470" cy="350" rx="24" ry="11" fill="#2a5f3a"/>
+                <ellipse cx="735" cy="356" rx="19" ry="10" fill="#2a5f3a"/>
+                <ellipse cx="655" cy="345" rx="16" ry="9" fill="#3c7f4e"/>
             </g>
 
-            <g class="pashupatinath-thin">
-                <rect x="1095" y="310" width="26" height="52" fill="#8f5b18"/>
-                <path d="M1086,312 Q1108,280 1130,312 Q1108,298 1086,312 Z" fill="#6e4510"/>
-                <rect x="1100" y="290" width="16" height="24" fill="#8f5b18"/>
-                <path d="M1094,292 Q1108,268 1122,292 Q1108,280 1094,292 Z" fill="#6e4510"/>
-                <rect x="1104" y="300" width="8" height="12" fill="#a97f1e"/>
-                <circle cx="1108" cy="264" r="6" fill="#ffd700"/>
-                <rect x="1106" y="252" width="4" height="9" fill="#ffd700"/>
-                <circle cx="1108" cy="249" r="4" fill="#ffd700"/>
+            <g class="pashupatinath">
+                <rect x="1022" y="330" width="150" height="24" rx="3" fill="#c9a227"/>
+                <rect x="1045" y="296" width="104" height="34" fill="#8f5b18"/>
+                <path d="M1020,298 Q1097,255 1174,298 Q1097,279 1020,298 Z" fill="#6e4510"/>
+                <rect x="1060" y="268" width="74" height="28" fill="#8f5b18"/>
+                <path d="M1044,270 Q1097,233 1150,270 Q1097,253 1044,270 Z" fill="#6e4510"/>
+                <rect x="1078" y="252" width="38" height="16" fill="#a97f1e"/>
+                <path d="M1068,254 Q1097,228 1126,254 Q1097,241 1068,254 Z" fill="#6e4510"/>
+                <rect x="1045" y="296" width="104" height="5" fill="#d4a437"/>
+                <rect x="1060" y="268" width="74" height="5" fill="#d4a437"/>
+                <rect x="1030" y="322" width="12" height="22" fill="#a97f1e"/>
+                <rect x="1152" y="322" width="12" height="22" fill="#a97f1e"/>
+                <rect x="1092" y="218" width="7" height="16" fill="#ffd700"/>
+                <circle cx="1095.5" cy="213" r="7" fill="#ffd700"/>
             </g>
 
             <g class="nepal-flag-big">
-                <rect x="46" y="46" width="9" height="260" fill="#6d7684"/>
-                <circle cx="50" cy="40" r="9" fill="#ffd700"/>
+                <rect x="48" y="46" width="10" height="262" fill="#6d7684"/>
+                <circle cx="53" cy="39" r="10" fill="#ffd700"/>
                 <g class="flag-waving">
-                    <polygon points="55,66 245,116 165,156 245,196 55,246" fill="#003893"/>
-                    <polygon points="68,76 228,117 160,156 228,195 68,234" fill="#dc143c"/>
-                    <path d="M104,102 A20,20 0 1,1 144,102 A20,20 0 1,1 104,102 Z M114,102 A10,10 0 1,0 134,102 A10,10 0 1,0 114,102 Z" fill="#ffffff"/>
-                    <circle cx="140" cy="170" r="18" fill="#ffffff"/>
+                    <polygon points="58,66 300,118 196,160 300,202 58,254" fill="#003893"/>
+                    <polygon points="74,77 278,119 188,160 278,201 74,241" fill="#dc143c"/>
+                    <path d="M172,95 A28,28 0 1,1 172,145 A22,22 0 1,0 172,95 Z" fill="#ffffff"/>
+                    <circle cx="180" cy="205" r="9" fill="#ffffff"/>
+                    <path d="M180,186 L183,195 L192,192 L186,200 L195,206 L186,205 L189,214 L180,209 L173,215 L178,206 L168,208 L177,200 L169,195 L180,199 Z" fill="#ffffff"/>
                 </g>
             </g>
 
-            <path d="M0,384 Q300,362 600,380 T1200,376 L1200,400 0,400 Z" fill="#1a2340"/>
+            <path d="M0,386 Q300,364 600,382 T1200,378 L1200,400 0,400 Z" fill="#1a2340"/>
             <g class="pines" fill="#2b3557">
-                <polygon points="180,380 192,350 204,380"/>
-                <polygon points="880,384 892,358 904,384"/>
-                <polygon points="990,380 1000,362 1010,380"/>
+                <polygon points="160,382 172,350 184,382"/>
+                <polygon points="900,386 912,360 924,386"/>
+                <polygon points="1010,382 1020,364 1030,382"/>
             </g>
 
-            <g class="birds" stroke="#4a4780" stroke-width="3" fill="none" stroke-linecap="round">
-                <path d="M420,130 q10,-10 20,0 M440,130 q10,-10 20,0"/>
-                <path d="M720,110 q8,-8 16,0 M736,110 q8,-8 16,0"/>
+            <g class="birds" stroke="#3c3a6e" stroke-width="3" fill="none" stroke-linecap="round">
+                <path d="M400,120 q10,-10 20,0 M420,120 q10,-10 20,0"/>
+                <path d="M740,100 q8,-8 16,0 M756,100 q8,-8 16,0"/>
             </g>
         </svg>
     </div>
