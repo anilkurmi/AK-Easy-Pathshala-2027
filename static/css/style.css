@@ -311,7 +311,7 @@ body {
     position: relative;
     border-radius: 18px;
     overflow: hidden;
-    min-height: 400px;
+    min-height: 340px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -319,49 +319,23 @@ body {
     border: 1px solid var(--card-border);
 }
 
-.hero-bg {
+.hero-scene {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-size: cover;
-    background-position: center;
-    animation: kenburns 22s ease-in-out infinite alternate;
-    transform-origin: center;
     z-index: 0;
 }
 
-@keyframes kenburns {
-    0% { transform: scale(1) translate(0, 0); }
-    50% { transform: scale(1.12) translate(-1.5%, 1.5%); }
-    100% { transform: scale(1) translate(0, 0); }
+.hero-scene svg {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
-.hero-overlay-gradient {
+.hero-banner-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(180deg, rgba(10,14,39,0.35) 0%, rgba(10,14,39,0.55) 45%, rgba(10,14,39,0.88) 100%);
+    background: linear-gradient(180deg, rgba(10,14,39,0.15) 0%, rgba(10,14,39,0.1) 40%, rgba(10,14,39,0.55) 100%);
     z-index: 1;
-}
-
-.hero-flag {
-    position: absolute;
-    top: 18px;
-    left: 18px;
-    z-index: 3;
-    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
-}
-
-.hero-flag svg { display: block; }
-
-.flag-waving {
-    transform-origin: 10px 90px;
-    animation: flagWave 3.2s ease-in-out infinite;
-}
-
-@keyframes flagWave {
-    0%, 100% { transform: rotate(0deg) skewY(0deg); }
-    25% { transform: rotate(3deg) skewY(1.5deg); }
-    50% { transform: rotate(0deg) skewY(0deg); }
-    75% { transform: rotate(-3deg) skewY(-1.5deg); }
 }
 
 .hero-inner {
@@ -370,207 +344,94 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 30px 22px 110px;
+    align-items: center;
+    padding: 20px;
 }
 
 .hero-main {
     text-align: center;
-    max-width: 760px;
-    width: 100%;
-    padding: 24px 28px 20px;
-    border-radius: 20px;
-    background: rgba(12, 16, 45, 0.5);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    padding: 14px 34px;
+    border-radius: 16px;
+    background: rgba(12, 16, 45, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.3);
 }
-
-.hero-logo-wrap { margin-bottom: 12px; }
-
-.hero-logo-left { text-align: left; }
-.hero-logo-center { text-align: center; }
-.hero-logo-right { text-align: right; }
-
-.hero-logo-img {
-    height: 72px;
-    max-width: 160px;
-    object-fit: contain;
-    background: rgba(255,255,255,0.95);
-    border-radius: 12px;
-    padding: 6px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-.hero-logo-icon {
-    width: 74px;
-    height: 74px;
-    margin: 0 auto;
-    background: linear-gradient(135deg, var(--accent), var(--purple));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.1rem;
-    color: #fff;
-    box-shadow: 0 8px 24px rgba(108, 99, 255, 0.45);
-}
-
-.hero-logo-left .hero-logo-icon { margin: 0; }
-.hero-logo-right .hero-logo-icon { margin-left: auto; margin-right: 0; }
 
 .hero-title {
     font-size: 2.3rem;
     font-weight: 800;
     color: #fff;
-    margin: 0 0 6px;
-    letter-spacing: 0.5px;
-    background: linear-gradient(90deg, #fff, #ffd98a);
+    margin: 0;
+    letter-spacing: 0.6px;
+    background: linear-gradient(90deg, #ffffff, #ffe6ad);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 3px 10px rgba(0,0,0,0.4));
+    filter: drop-shadow(0 3px 10px rgba(0,0,0,0.45));
 }
 
-.hero-tagline {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.95);
-    margin: 0 0 16px;
-    font-weight: 400;
+/* Hero SVG animations */
+.flag-waving {
+    transform-origin: 55px 155px;
+    animation: flagWave 3.2s ease-in-out infinite;
 }
 
-.hero-chips {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 16px;
+@keyframes flagWave {
+    0%, 100% { transform: rotate(0deg) skewY(0deg); }
+    25% { transform: rotate(2.5deg) skewY(1.5deg); }
+    50% { transform: rotate(0deg) skewY(0deg); }
+    75% { transform: rotate(-2.5deg) skewY(-1.5deg); }
 }
 
-.hero-chips .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.14);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 30px;
-    padding: 5px 14px;
-    font-size: 0.8rem;
-    color: #fff;
-    font-weight: 500;
+.cloud {
+    animation: cloudFloat 24s linear infinite;
 }
 
-.hero-chips .chip i { color: #ffd98a; }
-
-.hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 24px;
-    margin-bottom: 18px;
+.cloud-slow {
+    animation: cloudFloat 32s linear infinite reverse;
 }
 
-.hero-meta span {
-    color: rgba(255,255,255,0.95);
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
+@keyframes cloudFloat {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
 }
 
-.hero-meta i { color: #ffd98a; font-size: 1rem; }
-
-.hero-social {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
+.sun-glow {
+    transform-origin: 600px 270px;
+    animation: sunPulse 4.5s ease-in-out infinite;
 }
 
-.hero-social a {
-    width: 44px;
-    height: 44px;
-    background: rgba(255,255,255,0.16);
-    backdrop-filter: blur(8px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 1.25rem;
-    text-decoration: none;
-    transition: all 0.3s;
-    border: 1px solid rgba(255,255,255,0.25);
+@keyframes sunPulse {
+    0%, 100% { opacity: 0.75; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.12); }
 }
 
-.hero-social a:hover {
-    background: linear-gradient(135deg, var(--accent), var(--purple));
-    transform: translateY(-4px) scale(1.08);
-    box-shadow: 0 8px 22px rgba(108, 99, 255, 0.5);
+.mountain-main {
+    transform-origin: 600px 360px;
+    animation: mountainBreathe 6s ease-in-out infinite;
 }
 
-/* Landmark strip */
-.landmark-strip {
-    position: absolute;
-    bottom: 14px;
-    left: 0; right: 0;
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    padding: 0 14px;
+@keyframes mountainBreathe {
+    0%, 100% { opacity: 0.95; }
+    50% { opacity: 1; }
 }
 
-.landmark-card {
-    width: 150px;
-    border-radius: 14px;
-    overflow: hidden;
-    background: rgba(12, 16, 45, 0.75);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.18);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
+.birds {
+    animation: birdsFly 10s ease-in-out infinite;
 }
 
-.landmark-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 30px rgba(108, 99, 255, 0.35);
+@keyframes birdsFly {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(-16px) translateY(-6px); }
 }
-
-.landmark-card img {
-    width: 100%;
-    height: 70px;
-    object-fit: cover;
-    display: block;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-}
-
-.landmark-card span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 7px 8px;
-    font-size: 0.78rem;
-    color: #fff;
-    font-weight: 600;
-}
-
-.landmark-card span i { color: #ffd98a; }
 
 @media (max-width: 768px) {
-    .hero-banner { min-height: 360px; }
-    .hero-title { font-size: 1.7rem; }
-    .hero-logo-img { height: 55px; }
-    .hero-main { padding: 18px 14px 16px; }
-    .hero-inner { padding: 22px 12px 120px; }
-    .hero-chips { display: none; }
-    .landmark-card { width: 100px; }
-    .landmark-card img { height: 50px; }
-    .landmark-card span { font-size: 0.68rem; padding: 5px 4px; }
-    .landmark-strip { gap: 8px; }
-    .hero-flag { top: 10px; left: 10px; }
-    .hero-flag svg { width: 60px; height: 68px; }
+    .hero-banner { min-height: 240px; }
+    .hero-title { font-size: 1.6rem; }
+    .hero-main { padding: 10px 20px; }
 }
 
 /* Login Page */

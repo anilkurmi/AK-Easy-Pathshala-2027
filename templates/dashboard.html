@@ -4,64 +4,100 @@
 {% block content %}
 
 <div class="hero-banner mb-4">
-    <div class="hero-bg" style="background-image:url('{{ url_for('static', filename='images/everest.jpg') }}')"></div>
-    <div class="hero-overlay-gradient"></div>
+    <div class="hero-scene" aria-hidden="true">
+        <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="skyGrad2" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3a4fa8"/>
+                    <stop offset="45%" stop-color="#7aa2d4"/>
+                    <stop offset="78%" stop-color="#f2c57c"/>
+                    <stop offset="100%" stop-color="#ff9a6b"/>
+                </linearGradient>
+                <radialGradient id="sunGrad2" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#fff7d6" stop-opacity="1"/>
+                    <stop offset="60%" stop-color="#ffd98a" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="#ffd98a" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="snowGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="100%" stop-color="#dbe7ff"/>
+                </linearGradient>
+            </defs>
 
-    <div class="hero-flag">
-        <svg viewBox="0 0 180 200" width="90" height="100" xmlns="http://www.w3.org/2000/svg">
-            <g class="flag-waving">
-                <polygon points="10,16 152,58 96,90 152,122 10,164" fill="#003893"/>
-                <polygon points="24,24 136,60 92,90 136,120 24,156" fill="#dc143c"/>
-                <path d="M52,52 A15,15 0 1,1 82,52 A15,15 0 1,1 52,52 Z M60,52 A7,7 0 1,0 74,52 A7,7 0 1,0 60,52 Z" fill="#ffffff"/>
-                <circle cx="80" cy="110" r="13" fill="#ffffff"/>
+            <rect width="1200" height="400" fill="url(#skyGrad2)"/>
+
+            <circle class="sun-glow" cx="600" cy="270" r="150" fill="url(#sunGrad2)"/>
+            <circle cx="600" cy="270" r="45" fill="#fff3c4" opacity="0.95"/>
+
+            <g class="cloud">
+                <ellipse cx="300" cy="120" rx="75" ry="16" fill="#ffffff" opacity="0.4"/>
+                <ellipse cx="345" cy="110" rx="48" ry="12" fill="#ffffff" opacity="0.35"/>
+            </g>
+            <g class="cloud cloud-slow">
+                <ellipse cx="820" cy="100" rx="90" ry="18" fill="#ffffff" opacity="0.35"/>
+                <ellipse cx="780" cy="90" rx="52" ry="12" fill="#ffffff" opacity="0.3"/>
+            </g>
+
+            <polygon points="0,360 200,290 420,345 600,270 800,340 1000,285 1200,355 1200,400 0,400" fill="#6b7bbf" opacity="0.55"/>
+            <polygon points="0,370 250,315 500,360 720,300 950,360 1200,330 1200,400 0,400" fill="#55639f" opacity="0.75"/>
+
+            <g class="mountain-main">
+                <polygon points="420,372 600,150 780,372" fill="#3c3a6e"/>
+                <polygon points="460,372 600,210 740,372" fill="#4a4780"/>
+                <polygon points="600,150 660,230 540,230" fill="url(#snowGrad)"/>
+                <polygon points="600,150 600,230 540,230" fill="#ffffff" opacity="0.85"/>
+                <polygon points="560,230 600,190 640,230" fill="#f2f7ff"/>
+                <polygon points="520,260 600,190 680,260 640,300 560,300" fill="#e8f0ff"/>
+                <path d="M600,190 L620,260 L610,310 L600,290 L585,270 L565,240 Z" fill="#d7e4ff" opacity="0.6"/>
+                <polygon points="610,310 615,340 605,340 600,290" fill="#ffffff" opacity="0.5"/>
+                <polygon points="420,372 560,288 640,288 720,310 780,372" fill="#2e6b40"/>
+                <polygon points="455,372 575,300 690,315 745,372" fill="#3c7f4e"/>
+                <polygon points="500,372 600,312 700,322 730,372" fill="#4c925a"/>
+                <polygon points="560,372 600,322 660,372" fill="#5aa367"/>
+                <ellipse cx="500" cy="352" rx="22" ry="10" fill="#2a5f3a"/>
+                <ellipse cx="700" cy="358" rx="18" ry="9" fill="#2a5f3a"/>
+                <ellipse cx="640" cy="348" rx="15" ry="8" fill="#3c7f4e"/>
+            </g>
+
+            <g class="pashupatinath-thin">
+                <rect x="1095" y="310" width="26" height="52" fill="#8f5b18"/>
+                <path d="M1086,312 Q1108,280 1130,312 Q1108,298 1086,312 Z" fill="#6e4510"/>
+                <rect x="1100" y="290" width="16" height="24" fill="#8f5b18"/>
+                <path d="M1094,292 Q1108,268 1122,292 Q1108,280 1094,292 Z" fill="#6e4510"/>
+                <rect x="1104" y="300" width="8" height="12" fill="#a97f1e"/>
+                <circle cx="1108" cy="264" r="6" fill="#ffd700"/>
+                <rect x="1106" y="252" width="4" height="9" fill="#ffd700"/>
+                <circle cx="1108" cy="249" r="4" fill="#ffd700"/>
+            </g>
+
+            <g class="nepal-flag-big">
+                <rect x="46" y="46" width="9" height="260" fill="#6d7684"/>
+                <circle cx="50" cy="40" r="9" fill="#ffd700"/>
+                <g class="flag-waving">
+                    <polygon points="55,66 245,116 165,156 245,196 55,246" fill="#003893"/>
+                    <polygon points="68,76 228,117 160,156 228,195 68,234" fill="#dc143c"/>
+                    <path d="M104,102 A20,20 0 1,1 144,102 A20,20 0 1,1 104,102 Z M114,102 A10,10 0 1,0 134,102 A10,10 0 1,0 114,102 Z" fill="#ffffff"/>
+                    <circle cx="140" cy="170" r="18" fill="#ffffff"/>
+                </g>
+            </g>
+
+            <path d="M0,384 Q300,362 600,380 T1200,376 L1200,400 0,400 Z" fill="#1a2340"/>
+            <g class="pines" fill="#2b3557">
+                <polygon points="180,380 192,350 204,380"/>
+                <polygon points="880,384 892,358 904,384"/>
+                <polygon points="990,380 1000,362 1010,380"/>
+            </g>
+
+            <g class="birds" stroke="#4a4780" stroke-width="3" fill="none" stroke-linecap="round">
+                <path d="M420,130 q10,-10 20,0 M440,130 q10,-10 20,0"/>
+                <path d="M720,110 q8,-8 16,0 M736,110 q8,-8 16,0"/>
             </g>
         </svg>
     </div>
-
+    <div class="hero-banner-overlay"></div>
     <div class="hero-inner">
         <div class="hero-main">
-            <div class="hero-logo-wrap hero-logo-{{ LOGO_POSITION }}">
-                {% if LOGO_IMAGE_URL and 'http' in LOGO_IMAGE_URL %}
-                <img src="{{ LOGO_IMAGE_URL }}" alt="{{ SITE_NAME }} Logo" class="hero-logo-img">
-                {% elif LOGO_IMAGE_URL %}
-                <img src="{{ url_for('static', filename=LOGO_IMAGE_URL.replace('static/', '')) }}" alt="{{ SITE_NAME }} Logo" class="hero-logo-img">
-                {% else %}
-                <div class="hero-logo-icon"><i class="bi bi-book-half"></i></div>
-                {% endif %}
-            </div>
             <h1 class="hero-title">{{ SITE_NAME }}</h1>
-            <p class="hero-tagline">AI Your Teaching Partner</p>
-            <div class="hero-chips">
-                <span class="chip"><i class="bi bi-mortarboard"></i> CDC Nepal Curriculum</span>
-                <span class="chip"><i class="bi bi-stars"></i> Grade 1-12</span>
-                <span class="chip"><i class="bi bi-robot"></i> AI Powered</span>
-            </div>
-            <div class="hero-meta">
-                <span><i class="bi bi-geo-alt"></i> {{ SITE_ADDRESS }}</span>
-                <span><i class="bi bi-telephone"></i> {{ SITE_PHONE }}</span>
-                <span><i class="bi bi-envelope"></i> {{ SITE_EMAIL }}</span>
-            </div>
-            <div class="hero-social">
-                <a href="{{ SOCIAL_FACEBOOK }}" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
-                <a href="{{ SOCIAL_INSTAGRAM }}" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="{{ SOCIAL_TWITTER }}" target="_blank" title="Twitter"><i class="bi bi-twitter-x"></i></a>
-                <a href="{{ SOCIAL_YOUTUBE }}" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="landmark-strip">
-        <div class="landmark-card">
-            <img src="{{ url_for('static', filename='images/pashupatinath.jpg') }}" alt="Pashupatinath Temple">
-            <span><i class="bi bi-building"></i> Pashupatinath</span>
-        </div>
-        <div class="landmark-card">
-            <img src="{{ url_for('static', filename='images/lumbini.jpg') }}" alt="Lumbini">
-            <span><i class="bi bi-tree"></i> Lumbini</span>
-        </div>
-        <div class="landmark-card">
-            <img src="{{ url_for('static', filename='images/buddha.jpg') }}" alt="Gautam Buddha">
-            <span><i class="bi bi-flower1"></i> Gautam Buddha</span>
         </div>
     </div>
 </div>
