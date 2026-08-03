@@ -22,11 +22,17 @@ login_manager.login_view = 'login'
 @app.context_processor
 def inject_site_config():
     return {
+        'SITE_NAME': app.config.get('SITE_NAME'),
+        'SITE_EMAIL': app.config.get('SITE_EMAIL'),
+        'SITE_PHONE': app.config.get('SITE_PHONE'),
+        'SITE_ADDRESS': app.config.get('SITE_ADDRESS'),
         'SOCIAL_FACEBOOK': app.config.get('SOCIAL_FACEBOOK'),
         'SOCIAL_INSTAGRAM': app.config.get('SOCIAL_INSTAGRAM'),
         'SOCIAL_TWITTER': app.config.get('SOCIAL_TWITTER'),
-        'SITE_EMAIL': app.config.get('SITE_EMAIL'),
-        'SITE_PHONE': app.config.get('SITE_PHONE'),
+        'SOCIAL_YOUTUBE': app.config.get('SOCIAL_YOUTUBE'),
+        'BANNER_IMAGE_URL': app.config.get('BANNER_IMAGE_URL'),
+        'LOGO_IMAGE_URL': app.config.get('LOGO_IMAGE_URL'),
+        'LOGO_POSITION': app.config.get('LOGO_POSITION'),
     }
 
 @login_manager.user_loader

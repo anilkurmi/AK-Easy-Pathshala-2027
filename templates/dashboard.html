@@ -3,6 +3,35 @@
 {% block page_title %}Dashboard{% endblock %}
 {% block content %}
 
+<div class="hero-banner mb-4">
+    <div class="hero-banner-bg" {% if BANNER_IMAGE_URL and 'http' in BANNER_IMAGE_URL %}style="background-image:url('{{ BANNER_IMAGE_URL }}')"{% elif BANNER_IMAGE_URL and BANNER_IMAGE_URL != 'static/images/banner-default.jpg' %}style="background-image:url('{{ url_for('static', filename=BANNER_IMAGE_URL.replace('static/', '')) }}')"{% endif %}></div>
+    <div class="hero-banner-overlay"></div>
+    <div class="hero-banner-content">
+        <div class="hero-logo-wrap hero-logo-{{ LOGO_POSITION }}">
+            {% if LOGO_IMAGE_URL and 'http' in LOGO_IMAGE_URL %}
+            <img src="{{ LOGO_IMAGE_URL }}" alt="{{ SITE_NAME }} Logo" class="hero-logo-img">
+            {% elif LOGO_IMAGE_URL %}
+            <img src="{{ url_for('static', filename=LOGO_IMAGE_URL.replace('static/', '')) }}" alt="{{ SITE_NAME }} Logo" class="hero-logo-img">
+            {% else %}
+            <div class="hero-logo-icon"><i class="bi bi-book-half"></i></div>
+            {% endif %}
+        </div>
+        <h1 class="hero-title">{{ SITE_NAME }}</h1>
+        <p class="hero-tagline">AI Your Teaching Partner</p>
+        <div class="hero-meta">
+            <span><i class="bi bi-geo-alt"></i> {{ SITE_ADDRESS }}</span>
+            <span><i class="bi bi-telephone"></i> {{ SITE_PHONE }}</span>
+            <span><i class="bi bi-envelope"></i> {{ SITE_EMAIL }}</span>
+        </div>
+        <div class="hero-social">
+            <a href="{{ SOCIAL_FACEBOOK }}" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="{{ SOCIAL_INSTAGRAM }}" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="{{ SOCIAL_TWITTER }}" target="_blank" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="{{ SOCIAL_YOUTUBE }}" target="_blank" title="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+    </div>
+</div>
+
 <div class="row mb-4">
     <div class="col-md-3 col-6 mb-3">
         <div class="stat-card">

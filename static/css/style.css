@@ -267,6 +267,147 @@ body {
 /* Alert */
 .alert { border-radius: 10px; border: none; }
 
+/* Hero Banner (Dashboard) */
+.hero-banner {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 15px 40px rgba(108, 99, 255, 0.2);
+    border: 1px solid var(--card-border);
+}
+
+.hero-banner-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 40%, #6c63ff 100%);
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.hero-banner-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 14, 39, 0.72);
+    z-index: 1;
+}
+
+.hero-banner-content {
+    position: relative;
+    z-index: 2;
+    padding: 35px 30px;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+.hero-logo-wrap {
+    margin-bottom: 12px;
+}
+
+.hero-logo-left { text-align: left; }
+.hero-logo-center { text-align: center; }
+.hero-logo-right { text-align: right; }
+
+.hero-logo-img {
+    height: 70px;
+    max-width: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    padding: 6px;
+}
+
+.hero-logo-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+}
+
+.hero-logo-left .hero-logo-icon { margin: 0; }
+.hero-logo-right .hero-logo-icon { margin-left: auto; margin-right: 0; }
+
+.hero-title {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 5px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.4);
+}
+
+.hero-tagline {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.9);
+    margin: 0 0 18px;
+}
+
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 22px;
+    margin-bottom: 20px;
+}
+
+.hero-meta span {
+    color: rgba(255,255,255,0.9);
+    font-size: 0.88rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.hero-meta i { color: var(--accent); font-size: 1rem; }
+
+.hero-social {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.hero-social a {
+    width: 42px;
+    height: 42px;
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.hero-social a:hover {
+    background: var(--accent);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(108, 99, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .hero-banner { min-height: 220px; }
+    .hero-title { font-size: 1.6rem; }
+    .hero-logo-img { height: 55px; }
+    .hero-banner-content { padding: 25px 18px; }
+}
+
 /* Login Page */
 .login-page {
     min-height: 100vh;
