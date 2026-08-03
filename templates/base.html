@@ -24,6 +24,8 @@
                 </div>
             </div>
             <ul class="sidebar-nav">
+                <li class="nav-section">FILES</li>
+                <li><a href="{{ url_for('files_list') }}" class="{% if request.endpoint in ['files_list','upload_file'] %}active{% endif %}"><i class="bi bi-file-earmark"></i> Files & Documents</a></li>
                 <li class="nav-section">CURRICULUM</li>
                 <li><a href="{{ url_for('curriculum_list') }}" class="{% if request.endpoint == 'curriculum_list' %}active{% endif %}"><i class="bi bi-book"></i> CDC Curriculum</a></li>
                 <li class="nav-section">MAIN</li>

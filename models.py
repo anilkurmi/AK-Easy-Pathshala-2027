@@ -212,6 +212,20 @@ class Lesson(db.Model):
     order = db.Column(db.Integer, default=1)
 
 
+class FileDocument(db.Model):
+    __tablename__ = 'file_documents'
+    id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(300), nullable=False)
+    original_name = db.Column(db.String(300))
+    category = db.Column(db.String(100))
+    description = db.Column(db.Text)
+    class_name = db.Column(db.String(50))
+    subject = db.Column(db.String(100))
+    file_type = db.Column(db.String(20), default='pdf')
+    uploaded_by = db.Column(db.Integer, db.ForeignKey('users.id'))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+
 CLASS_CHOICES = [
     'Nursery', 'LKG', 'UKG',
     'Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5',

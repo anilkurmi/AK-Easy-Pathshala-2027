@@ -6,7 +6,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from config import Config
 from models import (db, User, QuestionBank, LessonPlan, Slide, Worksheet, FlashCard,
                     ReportCard, Student, Teacher, FeeRecord, Exam, Notice, UploadedImage,
-                    Subject, Unit, Lesson,
+                    Subject, Unit, Lesson, FileDocument,
                     CLASS_CHOICES, SUBJECT_CHOICES, QUESTION_TYPES, DIFFICULTY_LEVELS)
 
 app = Flask(__name__)
@@ -605,8 +605,75 @@ def cdc_info():
     return render_template('cdc_info.html')
 
 
-@app.route('/curriculum')
+@app.route('/files')
 @login_required
+def files_list():
+    class_filter = request.args.get('class', '')
+    query = FileDocument.query
+    if class_filter:
+        query = query.filter_by(class_name=class_filter)
+    files = query.order_by(FileDocument.created_at.desc()).all()
+    return render_template('files/list.html', files=files, classes=CLASS_CHOICES, class_filter=class_filter)
+
+
+@app.route('/files/upload', methods=['GET', 'POST'])
+@login_required
+def upload_file():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file selected', 'danger')
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            flash('No file selected', 'danger')
+            return redirect(request.url)
+        if file:
+            ext = file.filename.rsplit('.', 1)[1].lower() if '.' in file.filename else 'bin'
+            filename = datetime.now().strftime('%Y%m%d_%H%M%S_') + file.filename
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            fd = FileDocument(
+                filename=filename,
+                original_name=file.filename,
+                category=request.form.get('category'),
+                description=request.form.get('description'),
+                class_name=request.form.get('class_name'),
+                subject=request.form.get('subject'),
+                file_type=ext,
+                uploaded_by=current_user.id
+            )
+            db.session.add(fd)
+            db.session.commit()
+            flash('File uploaded successfully!', 'success')
+            return redirect(url_for('files_list'))
+
+    return render_template('files/upload.html', classes=CLASS_CHOICES, subjects=SUBJECT_CHOICES)
+
+
+@app.route('/files/download/<int:fid>')
+@login_required
+def download_file(fid):
+    fd = FileDocument.query.get_or_404(fid)
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], fd.filename)
+    if os.path.exists(filepath):
+        return send_file(filepath, as_attachment=True, download_name=fd.original_name)
+    flash('File not found', 'danger')
+    return redirect(url_for('files_list'))
+
+
+@app.route('/files/delete/<int:fid>', methods=['POST'])
+@login_required
+def delete_file(fid):
+    fd = FileDocument.query.get_or_404(fid)
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], fd.filename)
+    if os.path.exists(filepath):
+        os.remove(filepath)
+    db.session.delete(fd)
+    db.session.commit()
+    flash('File deleted!', 'success')
+    return redirect(url_for('files_list'))
+
+
+def init_db():
 def curriculum_list():
     class_filter = request.args.get('class', '')
     subjects = Subject.query
