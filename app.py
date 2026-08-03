@@ -675,13 +675,18 @@ def delete_file(fid):
 
 
 def init_db():
-def curriculum_list():
-    class_filter = request.args.get('class', '')
-    subjects = Subject.query
-    if class_filter:
-        subjects = subjects.filter_by(class_name=class_filter)
-    subjects = subjects.order_by(Subject.class_name, Subject.name).all()
-    return render_template('curriculum/list.html', subjects=subjects, classes=CLASS_CHOICES, class_filter=class_filter)
+    with app.app_context():
+        db.create_all()
+        if User.query.count() == 0:
+            admin = User(name='Admin', email='admin@akeasypathshala.com', role='admin')
+            admin.set_password('admin123')
+            teacher = User(name='Teacher', email='teacher@akeasypathshala.com', role='teacher')
+            teacher.set_password('teacher123')
+            db.session.add_all([admin, teacher])
+            db.session.commit()
+            print("Database initialized!")
+            print("Admin: admin@akeasypathshala.com / admin123")
+            print("Teacher: teacher@akeasypathshala.com / teacher123")
 
 
 @app.route('/curriculum/subjects/<int:sid>/units')
@@ -729,21 +734,6 @@ def add_lesson(uid):
         flash('Lesson added!', 'success')
         return redirect(url_for('lessons_list', uid=uid))
     return render_template('curriculum/add_lesson.html', unit=unit)
-
-
-def init_db():
-    with app.app_context():
-        db.create_all()
-        if User.query.count() == 0:
-            admin = User(name='Admin', email='admin@akeasypathshala.com', role='admin')
-            admin.set_password('admin123')
-            teacher = User(name='Teacher', email='teacher@akeasypathshala.com', role='teacher')
-            teacher.set_password('teacher123')
-            db.session.add_all([admin, teacher])
-            db.session.commit()
-            print("Database initialized!")
-            print("Admin: admin@akeasypathshala.com / admin123")
-            print("Teacher: teacher@akeasypathshala.com / teacher123")
 
 
 def populate_curriculum():
