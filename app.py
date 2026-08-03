@@ -11,6 +11,7 @@ from models import (db, User, QuestionBank, LessonPlan, Slide, Worksheet, FlashC
 
 app = Flask(__name__)
 app.config.from_object(Config)
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 db.init_app(app)
 login_manager = LoginManager()
